@@ -24,6 +24,10 @@ import static org.lwjgl.nanovg.NanoVG.nativeColorR;
  * <h3>Member documentation</h3>
  */
 public class NVGColor implements NativeResource {
+    
+    static {
+        System.loadLibrary("nanovg-lib");
+    }
 
     private static final int SIZEOF_FLOAT = 4;
     public static final int SIZEOF = (4 * SIZEOF_FLOAT);
