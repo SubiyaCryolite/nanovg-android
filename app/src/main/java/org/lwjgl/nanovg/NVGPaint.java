@@ -14,6 +14,10 @@ import java.nio.ByteOrder;
 import static org.lwjgl.nanovg.NanoVG.memAddress;
 
 public class NVGPaint implements NativeResource {
+    
+    static {
+        System.loadLibrary("nanovg-lib");
+    }
 
     private static final int SIZEOF_FLOAT = 4;
     private static final int SIZEOF_INT = 4;
