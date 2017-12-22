@@ -8,7 +8,7 @@ package org.lwjgl.nanovg;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.Charset;
 
 
 /**
@@ -156,7 +156,7 @@ public class NanoVG {
     }
 
     public static float nvgText(long ctx, float x, float y, CharSequence string) {
-        byte[] bb = string.toString().getBytes(StandardCharsets.UTF_8);
+        byte[] bb = string.toString().getBytes(Charset.defaultCharset());
         ByteBuffer fontEncoded = ByteBuffer.allocateDirect(bb.length).order(ByteOrder.nativeOrder()).put(bb);
         fontEncoded.rewind();
         return nnvgText(ctx, x, y, memAddress(fontEncoded), memAddress(fontEncoded) + fontEncoded.remaining());
@@ -179,7 +179,7 @@ public class NanoVG {
     public static native int nvgCreateImageMem(long ctx, int imageFlags, long data, int ndata);
 
     public static int nvgCreateFontMem(long ctx, CharSequence fontName, ByteBuffer fontData, int freeData) {
-        byte[] bb = fontName.toString().getBytes(StandardCharsets.US_ASCII);
+        byte[] bb = fontName.toString().getBytes(Charset.forName("US-ASCII"));
         ByteBuffer nameEncoded = ByteBuffer.allocateDirect(bb.length).order(ByteOrder.nativeOrder()).put(bb);
         nameEncoded.rewind();
         return nvgCreateFontMem(ctx, memAddress(nameEncoded), memAddress(fontData), fontData.remaining(), freeData);

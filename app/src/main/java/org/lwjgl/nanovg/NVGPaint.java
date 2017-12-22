@@ -53,7 +53,7 @@ public class NVGPaint implements NativeResource {
         IMAGE = 72;
     }
 
-    private ByteBuffer container = ByteBuffer.allocateDirect(SIZEOF).order(ByteOrder.nativeOrder());
+    private ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
     private long address = address(container);
 
 

@@ -11,12 +11,11 @@ add_library( nanovg-lib
              src/main/cpp/nanovg.c
              src/main/cpp/nanovg-lib.cpp
            )
-
-find_library( log-lib
-              log )
+find_library(log-lib
+             log)
 
 target_link_libraries(nanovg-lib
-                       ${log-lib}
-                        log
-                        EGL
-                        GLESv3)
+                      ${log-lib}
+                      log
+                      EGL
+                      GLESv3)

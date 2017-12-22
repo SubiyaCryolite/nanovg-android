@@ -36,7 +36,7 @@ public class NVGColor implements NativeResource {
     public static final int G = (1 * SIZEOF_FLOAT);
     public static final int B = (2 * SIZEOF_FLOAT);
     public static final int A = (3 * SIZEOF_FLOAT);
-    private ByteBuffer container = ByteBuffer.allocateDirect(SIZEOF).order(ByteOrder.nativeOrder());
+    private ByteBuffer container = BufferUtils.createByteBuffer(SIZEOF);
     private long address = address(container);
 
     NVGColor(long address, ByteBuffer container) {
