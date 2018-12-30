@@ -1,27 +1,29 @@
-apply plugin: 'com.android.library'
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
 
 android {
-    compileSdkVersion 18
+    compileSdkVersion 27
     defaultConfig {
-        minSdkVersion 18
-        targetSdkVersion 18
+        minSdkVersion 24
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         ndk {
-            abiFilters 'x86', 'armeabi', 'armeabi-v7a'
+            abiFilters "x86", "x86_64", "arm64-v8a", "armeabi-v7a"
         }
         externalNativeBuild {
             cmake {
                 //cppFlags "-Werror"
+                version "3.6.4111459"
             }
         }
     }
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
     externalNativeBuild {
@@ -30,15 +32,15 @@ android {
         }
     }
     packagingOptions {
-        exclude 'META-INF/DEPENDENCIES.txt'
-        exclude 'META-INF/LICENSE.txt'
+        exclude "META-INF/DEPENDENCIES.txt"
+        exclude "META-INF/LICENSE.txt"
     }
     compileOptions {
-        targetCompatibility JavaVersion.VERSION_1_7
-        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
-    testCompile 'junit:junit:4.12'
+    testCompile "junit:junit:4.12"
 }
