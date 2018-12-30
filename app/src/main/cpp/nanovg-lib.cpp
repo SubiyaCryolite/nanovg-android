@@ -1,8 +1,8 @@
 #include <jni.h>
-#include "nanovg.h"
 
 #define NANOVG_GLES3_IMPLEMENTATION
 
+#include "nanovg.h"
 #include "nanovg_gl.h"
 
 extern "C" {
